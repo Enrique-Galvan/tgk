@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>  
+<module xmlns="urn:jboss:module:1.0" name="tgk.com.sap.db.jdbc">
+	<resources>
+		<resource-root path="ngdbc-2.4.63.jar"/>
+	</resources>
+	<dependencies>
+		<module name="javax.api"/>
+		<module name="javax.transaction.api"/>
+	</dependencies>
+</module>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>    
+    <Console name="CONSOLE" target="SYSTEM_OUT">
+      <ThresholdFilter level="INFO"/>
+      <PatternLayout pattern="%-5r %-5p [%c] (%M:%L) %m%n"/>
+    </Console>
+    <RollingFile fileName="/opt/tagetik/logs/tagetik.log" filePattern="/opt/tagetik/logs/tagetik-%d{yyyy-MM-dd}-%i.log.gz" name="FILE">
+      <PatternLayout>
+        <Pattern>%-5r %-5p [%c] (%M:%L) %m%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1"/>
+		    <SizeBasedTriggeringPolicy size="1024 MB"/>
+      </Policies>
+	  <DefaultRolloverStrategy>
+        <Delete basePath="/opt/tagetik/logs" maxDepth="2">
+          <IfFileName glob="tagetik-*.log.gz">
+            <IfLastModified age="60d" />            
+          </IfFileName>
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+  </Appenders>
+  
+  <Loggers>
+    <Logger level="INFO" name="org.apache"/>
+    <Logger level="WARN" name="jacorb"/>
+    <Logger level="INFO" name="org.jgroups"/>
+    <Logger level="INFO" name="org.apache.axis"/>
+    <Logger level="INFO" name="org.jboss"/>
+    <Logger level="INFO" name="com.arjuna.ats.arjuna.logging"/>
+    <Logger level="INFO" name="org.jboss.management"/>
+    <Logger level="INFO" name="org.jboss.serial"/>
+    <Logger level="INFO" name="tomcat"/>
+    <Logger level="INFO" name="it.grupposervizi.easy"/>
+    <Logger level="INFO" name="it.grupposervizi.easy.commons.FlexLogger"/>
+    <Logger level="INFO" name="it.grupposervizi.easy.commons.EasyMultiPurposeFilter"/>
+    <Logger level="INFO" name="it.grupposervizi.easy.commons.vo.FlexDataAccess"/>
+    <Logger level="INFO" name="it.grupposervizi.easy.ef.base"/>
+    <Logger level="INFO" name="it.grupposervizi.easy.base.MemoryBean"/>
+    <Logger level="INFO" name="it.grupposervizi.easy.ef.repository"/>
+    <Logger level="INFO" name="it.grupposervizi.easy.ef.reporting.base"/>
+    <Logger level="INFO" name="net.sf.hibernate"/>
+    <Logger level="INFO" name="org.hibernate"/>
+    <Logger level="INFO" name="it.grupposervizi.easy.commons.mdb"/>
+    <Logger level="INFO" name="it.grupposervizi.easy.commons.EasyContext"/>
+    <Logger level="WARN" name="org.openamf"/>
+    <Logger level="INFO" name="org.jnp"/>
+    <Logger level="INFO" name="org.quartz"/>
+    <Logger level="INFO" name="tgk.gsqldb"/>
+    <Logger level="INFO" name="com.arjuna"/>
+    <Logger level="INFO" name="easy.org"/>
+    <Logger level="WARN" name="easy.org.hibernate"/>
+    <Logger level="INFO" name="eu.medsea.mimeutil"/>
+    <Logger level="INFO" name="net.sf.jasperreports.engine"/>
+    <Logger level="INFO" name="org.springframework"/>
+    <Logger level="INFO" name="tgk.org.quartz"/>
+    <Logger level="INFO" name="liquibase.ext.apm"/>
+    <Logger level="INFO" name="java.sql"/>
+    <Logger level="INFO" name="com.tagetik.web.vaadin.navigator.TgkNavigator"/>    
+    <Root level="INFO">
+      <!--<AppenderRef ref="CONSOLE"/>-->
+      <AppenderRef ref="FILE"/>
+    </Root>    
+  </Loggers>
+</Configuration>
